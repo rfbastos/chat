@@ -30,6 +30,7 @@ export class UserProvider extends BaseProvider {
   ) {
     super(); //usar quando usa o extends
     console.log('Hello UserProvider Provider');    
+    this.listenAuthState();
   
   }
 
