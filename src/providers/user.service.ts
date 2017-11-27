@@ -31,6 +31,7 @@ export class UserProvider extends BaseProvider {
     super(); //usar quando usa o extends
     console.log('Hello UserProvider Provider');    
     this.listenAuthState();
+    
   
   }
 
@@ -60,7 +61,7 @@ export class UserProvider extends BaseProvider {
   create(user: User, uuid: string): Promise<void> {
     return this.db.object(`/users/${uuid}`)
       .set(user) //grava ou substitui dados no object
-      .catch(this.handlePromiseError);
+      .catch(this.handlePromiseError); //se der erro retorna
   }
 
   edit(user: {name: string, username: string, photo: string}): Promise<void> {

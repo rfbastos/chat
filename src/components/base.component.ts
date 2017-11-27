@@ -20,7 +20,7 @@ export abstract class BaseComponent implements OnInit {
 
     onLogout(): void{
         this.alertCtrl.create({
-            message: 'Você deseja sair?',
+            message: 'Tem certeza que deseja sair?',
             buttons: [
                 {
                     text: 'Sim',
@@ -34,7 +34,7 @@ export abstract class BaseComponent implements OnInit {
                     }
                 },
                 {
-                    text: 'Não'
+                    text: 'Não, quero ficar mais'
                 }
             ]
         }).present(); // aprsenta o alerta

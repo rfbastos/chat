@@ -1,5 +1,6 @@
+import { ChatPage } from './../chat/chat';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 
 import { SignupPage } from './../signup/signup';
 import { Observable } from 'rxjs/Observable';
@@ -22,7 +23,8 @@ export class HomePage {
   constructor(
     public authProvider: AuthProvider,
     public navCtrl: NavController,
-    public userProvider: UserProvider
+    public userProvider: UserProvider,
+    public toastCtrl: ToastController
   ) {
 
   }
@@ -39,12 +41,32 @@ export class HomePage {
    
   }
 
-  // onSignUp(): void{
-  //   this.navCtrl.push(SignupPage);
-  // }
   onSignUp(): void {
     console.log('Abrindo a pagina Sign Up');
     this.navCtrl.push(SignupPage);
+  }
+
+  onChatCreate(user): void {
+    console.log("Abrindo o Chat com "+user.name);
+    this.presentToast("Você está em uma conversa com "+user.name);
+
+    this.navCtrl.push(ChatPage,{
+      recipientUser: user
+    });
+  }
+
+  presentToast(msg:string) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 1000,
+      position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
 }

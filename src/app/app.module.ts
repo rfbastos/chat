@@ -1,4 +1,4 @@
-import { CustomLoggedHeaderComponent } from './../components/custom-logged-header/custom-logged-header';
+import { ChatPage } from './../pages/chat/chat';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -12,8 +12,8 @@ import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-import { MyApp } from './app.component';
 import { CapitalizePipe } from './../pipes/capitalize.pipe';
+import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SigninPage } from './../pages/signin/signin';
 import { SignupPage } from './../pages/signup/signup';
@@ -22,8 +22,7 @@ import { AuthProvider } from '../providers/auth.service';
 import { BaseProvider } from '../providers/base.service';
 import { UserProvider } from '../providers/user.service';
 
-
-
+import { CustomLoggedHeaderComponent } from './../components/custom-logged-header/custom-logged-header';
 
 const firebaseAppConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyBtyC2q3dqLuUSny1kuzzCfaZ7n2rA3nho",
@@ -32,14 +31,15 @@ const firebaseAppConfig: FirebaseAppConfig = {
   projectId: "webgoias-chat",
   storageBucket: "webgoias-chat.appspot.com",
   messagingSenderId: "960409567813"
-}
+};
 
 
 @NgModule({
   declarations: [
-    HomePage,
     CapitalizePipe,
+    ChatPage,
     CustomLoggedHeaderComponent,
+    HomePage,
     MyApp,
     SigninPage,
     SignupPage
@@ -55,8 +55,9 @@ const firebaseAppConfig: FirebaseAppConfig = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    ChatPage,
     HomePage,
+    MyApp,
     SigninPage,
     SignupPage
   ],
@@ -65,7 +66,6 @@ const firebaseAppConfig: FirebaseAppConfig = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    BaseProvider,
     UserProvider
   ]
 })

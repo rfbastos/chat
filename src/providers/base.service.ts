@@ -18,7 +18,7 @@ const extractError = (error: Response | any): string => {
   return errMsg;
 }
 
-export class BaseProvider {
+export abstract class BaseProvider {
 
   protected handlePromiseError(error: Response | any): Promise<any> {
     return Promise.reject(extractError(error));

@@ -61,6 +61,11 @@ export class SigninPage {
     return loading;
   }
 
+  onHomePage(): void {
+    this.navCtrl.push(HomePage);
+  }
+  
+
   private showAlert(message: string): void {
     this.alertCtrl.create({
       message: message,

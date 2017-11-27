@@ -24,8 +24,7 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'users'" no-lines>
-        <ion-item>Usuarios</ion-item>
-      <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">
+        <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">
         <ion-avatar item-start>
           <!-- <img [src]="user.photo || 'assets/images/no-photo.jpg'"> -->
         </ion-avatar>
