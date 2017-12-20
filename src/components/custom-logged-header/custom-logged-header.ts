@@ -15,6 +15,7 @@ export class CustomLoggedHeaderComponent extends BaseComponent {
   
     @Input() title: string;
     @Input() user: User;
+    
   
     constructor(
       public alertCtrl: AlertController,

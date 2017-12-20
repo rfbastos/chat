@@ -84,6 +84,14 @@ export class UserProvider extends BaseProvider {
     return this.db.object<User>(`/users/${userId}`);
   }
   
+  uploadPhoto(file: File, userId: string): firebase.storage.UploadTask {
+    return this.firebaseApp
+      .storage()
+      .ref() //Caminho root (se colocar o .put() aqui a foto vai pra raiz)
+      .child(`/users/${userId}`) //setando o "diretorio filho"
+      .put(file); // enviando o arquivo
+  }
+
 
 
 

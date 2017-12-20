@@ -1,4 +1,4 @@
-import { ChatPage } from './../pages/chat/chat';
+import { ProgressBarComponent } from './../components/progress-bar/progress-bar';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -13,16 +13,24 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { CapitalizePipe } from './../pipes/capitalize.pipe';
+import { ChatPage } from './../pages/chat/chat';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SigninPage } from './../pages/signin/signin';
 import { SignupPage } from './../pages/signup/signup';
 
 import { AuthProvider } from '../providers/auth.service';
-import { BaseProvider } from '../providers/base.service';
-import { UserProvider } from '../providers/user.service';
 
+import { UserProvider } from '../providers/user.service';
+import { ChatProvider } from '../providers/chat.service';
+import { UserProfilePage } from './../pages/user-profile/user-profile';
+
+import { UserInfoComponent } from './../components/user-info/user-info.component';
+
+import { MessageBoxComponent } from './../components/message-box/message-box.component';
+import { MessageProvider } from '../providers/message.service';
 import { CustomLoggedHeaderComponent } from './../components/custom-logged-header/custom-logged-header';
+import { UserMenuComponent } from '../components/user-menu/user-menu';
 
 const firebaseAppConfig: FirebaseAppConfig = {
   apiKey: "AIzaSyBtyC2q3dqLuUSny1kuzzCfaZ7n2rA3nho",
@@ -40,9 +48,14 @@ const firebaseAppConfig: FirebaseAppConfig = {
     ChatPage,
     CustomLoggedHeaderComponent,
     HomePage,
+    MessageBoxComponent,
     MyApp,
+    ProgressBarComponent,
     SigninPage,
-    SignupPage
+    SignupPage,
+    UserInfoComponent,
+    UserMenuComponent,
+    UserProfilePage
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseAppConfig),
@@ -59,13 +72,16 @@ const firebaseAppConfig: FirebaseAppConfig = {
     HomePage,
     MyApp,
     SigninPage,
-    SignupPage
+    SignupPage,
+    UserProfilePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
+    ChatProvider,
+    MessageProvider,
     UserProvider
   ]
 })

@@ -1,7 +1,7 @@
 <ion-header>
 
-  <custom-logged-header [title]="view | capitalize:true" ></custom-logged-header>
- 
+  <custom-logged-header [title]="view | capitalize:true"></custom-logged-header>
+
   <ion-toolbar>
     <ion-segment [(ngModel)]="view">
       <ion-segment-button value="chats">
@@ -13,6 +13,11 @@
     </ion-segment>
   </ion-toolbar>
 
+  <ion-toolbar>
+    <ion-searchbar placeholder="Pesquisar" (ionInput)="filterItems($event)"></ion-searchbar>
+  </ion-toolbar>
+
+
 </ion-header>
 
 <ion-content padding>
@@ -20,13 +25,22 @@
   <div [ngSwitch]="view">
 
     <ion-list *ngSwitchCase="'chats'" no-lines>
-      <ion-item>Chats</ion-item>
+      <button ion-item *ngFor="let chat of chats | async" (click)="onChatOpen(chat)">
+        <ion-avatar item-start>
+          <img [src]="chat.photo || 'assets/imgs/no-photo.jpg'">
+        </ion-avatar>
+        <h2> {{ chat.title }}</h2>
+        <p *ngIf="chat.lastMessage; else customMessage">{{ chat.timestamp | date:'dd/mm/y H:mm' }} - {{ chat.lastMessage }}</p>
+        <ng-template #customMessage>
+          <p>Sem mensagens</p>
+        </ng-template>
+      </button>
     </ion-list>
 
     <ion-list *ngSwitchCase="'users'" no-lines>
-        <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">
+      <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">
         <ion-avatar item-start>
-          <!-- <img [src]="user.photo || 'assets/images/no-photo.jpg'"> -->
+          <img [src]="user.photo || 'assets/imgs/no-photo.jpg'">
         </ion-avatar>
         {{ user.name }}
       </button>

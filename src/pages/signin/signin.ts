@@ -3,7 +3,7 @@ import { AuthProvider } from './../../providers/auth.service';
 import { SignupPage } from './../signup/signup';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Loading, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, Loading, AlertController, LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-signin',

@@ -29,6 +29,7 @@ export abstract class BaseComponent implements OnInit {
                         .then(
                             () => {
                                 this.navCtrl.setRoot(SigninPage);
+                                this.menuCtrl.enable(false,'user-menu');
                             }
                         )
                     }
@@ -37,6 +38,6 @@ export abstract class BaseComponent implements OnInit {
                     text: 'Não, quero ficar mais'
                 }
             ]
-        }).present(); // aprsenta o alerta
+        }).present(); // apresenta o alerta
     }
 }
