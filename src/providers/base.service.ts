@@ -1,5 +1,6 @@
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
+import 'rxjs/add/observable/bindNodeCallback';
 import { AngularFireList, AngularFireObject } from 'angularfire2/database';
 
 

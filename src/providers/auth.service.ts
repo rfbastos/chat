@@ -1,22 +1,22 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-
-import { User } from './../models/user.model';
-
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/bindNodeCallback';
 
-import { BaseProvider } from './base.service';
+import { AngularFireAuth } from "angularfire2/auth";
+
+import { BaseProvider } from "./base.service";
 
 import * as firebase from 'firebase/app';
+
 
 @Injectable()
 export class AuthProvider extends BaseProvider  {
 
   constructor(
     public afAuth: AngularFireAuth,
-    public http: HttpClient
+    public http: Http
   ) {
     super();
     console.log('Hello AuthProvider Provider');

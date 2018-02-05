@@ -1,17 +1,15 @@
-import { HttpClient } from '@angular/common/http';
-import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
+import { Observable } from 'rxjs';
+//import { map } from 'rxjs/operators/map';
 
-import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators/map';
+import { FirebaseApp } from "angularfire2";
+import { AngularFireAuth } from "angularfire2/auth";
+import { AngularFireDatabase, AngularFireObject /*, AngularFireList*/ } from "angularfire2/database";
 
-import { FirebaseApp } from 'angularfire2';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, AngularFireObject, AngularFireList  } from 'angularfire2/database';
-
-import { BaseProvider } from './base.service';
-import { User } from '../models/user.model';
+import { BaseProvider } from "./base.service";
+import { User } from './../models/user.model';
 
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
@@ -22,7 +20,7 @@ export class UserProvider extends BaseProvider {
   users: Observable<User[]>;
   currentUser: AngularFireObject<User>;
 
-  constructor(
+  constructor(    
     public afAuth: AngularFireAuth,
     public db: AngularFireDatabase,
     public firebaseApp: FirebaseApp,

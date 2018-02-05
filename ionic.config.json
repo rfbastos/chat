@@ -2,5 +2,7 @@
   "name": "webgoiasChat",
   "app_id": "f6878156",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

@@ -1,19 +1,17 @@
 import { Component, ViewChild } from '@angular/core';
-import { Content, NavController, NavParams  } from 'ionic-angular';
+import { Content, NavController, NavParams } from 'ionic-angular';
 
 import { AngularFireList, AngularFireObject } from 'angularfire2/database';
 
 import { AuthProvider } from './../../providers/auth.service';
+import { Chat } from './../../models/chat.model';
 import { ChatProvider } from './../../providers/chat.service';
+import { Message } from './../../models/message.model';
 import { MessageProvider } from './../../providers/message.service';
+import { User } from './../../models/user.model';
 import { UserProvider } from './../../providers/user.service';
 
-import { Chat } from '../../models/chat.model';
-import { Message } from '../../models/message.model';
-import { User } from './../../models/user.model';
-
 import * as firebase from 'firebase/app';
-import { map } from 'rxjs/operators/map';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -23,7 +21,6 @@ import { Observable } from 'rxjs/Observable';
 export class ChatPage {
 
   @ViewChild(Content) content: Content;
-
   messages: AngularFireList<Message>;
   viewMessages: Observable<Message[]>;
   pageTitle: string;

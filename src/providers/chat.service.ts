@@ -1,16 +1,15 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators/map';
+import { Http } from '@angular/http';
+//import { map } from 'rxjs/operators/map';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, AngularFireList, AngularFireObject, AngularFireAction, DatabaseSnapshot } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject /*, AngularFireAction, DatabaseSnapshot */ } from 'angularfire2/database';
 
-import { BaseProvider } from './base.service';
-
+import { BaseProvider } from "./base.service";
 import { Chat } from './../models/chat.model';
 
 import * as firebase from 'firebase/app';
-import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
 
 
 
@@ -22,11 +21,11 @@ export class ChatProvider extends BaseProvider {
   constructor(
     public afAuth: AngularFireAuth,
     public db: AngularFireDatabase,
-    public http: HttpClient
+    public http: Http
   ) {
     super();
     this.setChats();
-    console.log('Hello ChatProvider Provider');
+    console.log('Hello ChatProvider Provider is running');
   }
 
   private setChats(): void {
